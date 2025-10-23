@@ -1,4 +1,4 @@
---Fix 2
+--Fix3
 
 repeat
 	wait(1)
@@ -394,7 +394,7 @@ if workspace:FindFirstChild("Items") then
 			if Items:FindFirstChild("Halloween Candle") then
 				Halloween_Candle = Items:FindFirstChild("Halloween Candle")
 				print("Can stop spin")
-				task.delay(10, function()
+				task.delay(30, function()
 					if Spining then
 						Spining:Disconnect()
 						Spining = nil
@@ -406,11 +406,11 @@ if workspace:FindFirstChild("Items") then
 							if ItemModel.Name == "Halloween Candle" and ItemModel.PrimaryPart then
 								BringItem(ItemModel)
 							end
-						end						
+						end
 					end)
 				end)
 				
-				break				
+				break
 			end
 			
 			task.wait(1)
@@ -481,8 +481,8 @@ if workspace:FindFirstChild("Items") then
 				if item.PrimaryPart then
 					item.PrimaryPart.CFrame = hmn.CFrame
 				end
-				RequestCollectCandy:FireServer()
 			end
+			RequestCollectCandy:FireServer()
 		end)
 	end)
 	
@@ -497,9 +497,10 @@ if workspace:FindFirstChild("Items") then
 		end
 	end
 	
+	task.wait(5)
 	for i=1,10 do
-		game:GetService("TeleportService"):Teleport(79546208627805)
 		task.wait(5)
+		game:GetService("TeleportService"):Teleport(79546208627805)
 	end
 
 end
