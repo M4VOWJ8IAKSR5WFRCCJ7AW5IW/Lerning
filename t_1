@@ -1,3 +1,5 @@
+--Fix 1
+
 repeat
 	wait(1)
 until game.Players and game.Players.LocalPlayer and game.Players.LocalPlayer.Character
@@ -9,8 +11,16 @@ queue_on_teleport([[
 loadstring(game:HttpGet('https://raw.githubusercontent.com/M4VOWJ8IAKSR5WFRCCJ7AW5IW/Lerning/refs/heads/main/t_1'))()
 ]])
 
+LocalPlayer = game.Players.LocalPlayer;
+plrGUI = LocalPlayer.PlayerGui;
+ch = LocalPlayer.Character;
+hu = ch:FindFirstChild("Humanoid");
+hmn = ch:FindFirstChild("HumanoidRootPart");
+HttpService = game:GetService("HttpService");
+RunService = game:GetService("RunService")
+
 task.spawn(function()
-	
+
 	pcall(function()
 		local FarmCandy = Instance.new("ScreenGui")
 		local Frame = Instance.new("Frame")
@@ -109,8 +119,8 @@ task.spawn(function()
 		UICorner.CornerRadius = UDim.new(0.100000001, 0)
 		UICorner.Parent = B_StatsFrame
 
-		local CandyCount = game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Interface"):WaitForChild("CandyCount"):WaitForChild("Count") or 0
-		
+		local CandyCount = plrGUI:WaitForChild("Interface"):WaitForChild("CandyCount"):WaitForChild("Count") or 0
+
 		Candy_Value.Name = "Candy_Value"
 		Candy_Value.Parent = B_StatsFrame
 		Candy_Value.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -126,7 +136,7 @@ task.spawn(function()
 		Candy_Value.TextSize = 14.000
 		Candy_Value.TextWrapped = true
 		Candy_Value.TextXAlignment = Enum.TextXAlignment.Left
-		
+
 		if CandyCount then
 			task.spawn(function()
 				while true do
@@ -135,7 +145,7 @@ task.spawn(function()
 				end
 			end)
 		end
-		
+
 		AccountName.Name = "AccountName"
 		AccountName.Parent = B_StatsFrame
 		AccountName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -199,7 +209,7 @@ task.spawn(function()
 			CloseUIButton.Active = true
 		end)
 	end)
-	
+
 	if tonumber(game.PlaceId) ~= tonumber(79546208627805) then	
 		RemoteEvents = game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvents")
 		DamagePlayer = RemoteEvents:FindFirstChild("AnalyticsTimeFirstPersonST") or RemoteEvents:FindFirstChild("DamagePlayer")
@@ -210,14 +220,6 @@ task.spawn(function()
 		end
 	end
 end)
-
-LocalPlayer = game.Players.LocalPlayer;
-plrGUI = LocalPlayer.PlayerGui;
-ch = LocalPlayer.Character;
-hu = ch:FindFirstChild("Humanoid");
-hmn = ch:FindFirstChild("HumanoidRootPart");
-HttpService = game:GetService("HttpService");
-RunService = game:GetService("RunService")
 
 if tonumber(game.PlaceId) == tonumber(79546208627805) then	
 	EntryScreen = plrGUI:WaitForChild("Interface"):WaitForChild("EntryScreen")
