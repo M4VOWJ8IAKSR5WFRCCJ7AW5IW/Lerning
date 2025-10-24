@@ -1,5 +1,4 @@
---Fix3
-
+--f4
 repeat
 	wait(1)
 until game.Players and game.Players.LocalPlayer and game.Players.LocalPlayer.Character
@@ -20,6 +19,7 @@ HttpService = game:GetService("HttpService");
 RunService = game:GetService("RunService")
 
 task.spawn(function()
+	local StackTime = 0
 	pcall(function()
 		
 		local FarmCandy = Instance.new("ScreenGui")
@@ -137,7 +137,16 @@ task.spawn(function()
 		if CandyCount then
 			task.spawn(function()
 				while true do
-					Candy_Value.Text = "Candy : "..(tostring(CandyCount.text) or 0)
+					pcall(function()
+						StackTime = StackTime + 1
+						if StackTime >= 320 then
+							for i=1,10 do
+								task.wait(5)
+								game:GetService("TeleportService"):Teleport(79546208627805)
+							end
+						end
+						Candy_Value.Text = "Candy : "..(tostring(CandyCount.text) or 0)
+					end)
 					task.wait(1)
 				end
 			end)
